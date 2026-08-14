@@ -17,7 +17,7 @@ const steps = [
   {
     icon: Waves,
     title: "Gas drips out",
-    body: "Treasury sends native gas to Base, Optimism, World, Arbitrum, and more — ready to spend.",
+    body: "Treasury sends native gas to Base, Optimism, World, and more — ready to spend.",
   },
 ];
 

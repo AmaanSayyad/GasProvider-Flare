@@ -45,6 +45,21 @@ const UserHistoryQuerySchema = z.object({
   limit: z.string().regex(/^\d+$/).transform(Number).pipe(z.number().int().min(1).max(100)).default("20"),
 });
 
+/** Disabled destinations (operator gas / demo stability). */
+const DISABLED_DESTINATION_CHAIN_IDS = new Set<number>([
+  11155111, // Ethereum Sepolia
+  421614, // Arbitrum Sepolia
+]);
+
+function assertDestinationsEnabled(destinationChains: number[]): ApiError | null {
+  const blocked = destinationChains.filter((id) => DISABLED_DESTINATION_CHAIN_IDS.has(id));
+  if (blocked.length === 0) return null;
+  return {
+    error: `Destination chain(s) disabled: ${blocked.join(", ")}`,
+    code: "VALIDATION_ERROR",
+  };
+}
+
 // ============================================================================
 // Route Registration
 // ============================================================================
@@ -139,6 +154,11 @@ export function registerTreasuryRoutes(
       try {
         const payload = EstimateRequestSchema.parse(request.body);
 
+        const disabled = assertDestinationsEnabled(payload.destinationChains);
+        if (disabled) {
+          return reply.code(400).send(disabled);
+        }
+
         // Validate allocation percentages sum to 100
         const totalPercentage = payload.allocationPercentages.reduce((sum, pct) => sum + pct, 0);
         if (Math.abs(totalPercentage - 100) > 0.01) {
@@ -232,6 +252,11 @@ export function registerTreasuryRoutes(
     async (request: FastifyRequest<{ Body: any }>, reply: FastifyReply) => {
       try {
         const payload = DepositRequestSchema.parse(request.body);
+
+        const disabled = assertDestinationsEnabled(payload.destinationChains);
+        if (disabled) {
+          return reply.code(400).send(disabled);
+        }
 
         // Validate allocation percentages sum to 100
         const totalPercentage = payload.allocationPercentages.reduce((sum, pct) => sum + pct, 0);

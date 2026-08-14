@@ -606,7 +606,6 @@ const destinationChainIds = [
   "optimismSepolia",
   "worldSepolia",
   "baseSepolia",
-  "arbitrumSepolia",
   "polygonAmoy",
   "zoraSepolia",
   "scrollSepolia",
@@ -619,13 +618,23 @@ const destinationChainIds = [
   "celoAlfajores",
 ] as const;
 
+/** Chains hidden from destination selection (unstable / underfunded operator gas). */
+const DISABLED_DESTINATION_IDS = new Set([
+  "sepolia", // Ethereum Sepolia
+  "arbitrumSepolia",
+]);
+
+const DISABLED_DESTINATION_NUMERIC_IDS = new Set([
+  11155111, // Ethereum Sepolia
+  421614, // Arbitrum Sepolia
+]);
+
 /** Pre-select these so a demo doesn't auto-include unfunded chains. */
 export const DEFAULT_DESTINATION_IDS = [
   "coston2",
   "optimismSepolia",
   "worldSepolia",
   "baseSepolia",
-  "arbitrumSepolia",
 ] as const;
 
 export const SOURCE_CHAINS = ["coston2", "monadTestnet"]
@@ -634,7 +643,8 @@ export const SOURCE_CHAINS = ["coston2", "monadTestnet"]
 
 const curatedDestinations = destinationChainIds
   .map((id) => allChains.find((chain) => chain.id === id))
-  .filter((chain): chain is ChainData => chain !== undefined);
+  .filter((chain): chain is ChainData => chain !== undefined)
+  .filter((chain) => !DISABLED_DESTINATION_IDS.has(chain.id));
 
 const curatedNumericIds = new Set(
   curatedDestinations.map((c) => c.viemChain.id)
@@ -643,7 +653,11 @@ const curatedNumericIds = new Set(
 /** Full destination list: curated branding first, then Chainlist (~1000). */
 export const DESTINATION_CHAINS: ChainData[] = [
   ...curatedDestinations,
-  ...CATALOG_CHAINS.filter((c) => !curatedNumericIds.has(c.viemChain.id)),
+  ...CATALOG_CHAINS.filter(
+    (c) =>
+      !curatedNumericIds.has(c.viemChain.id) &&
+      !DISABLED_DESTINATION_NUMERIC_IDS.has(c.viemChain.id)
+  ),
 ].slice(0, 1000);
 
 export const DEFAULT_DESTINATION_CHAINS = DEFAULT_DESTINATION_IDS

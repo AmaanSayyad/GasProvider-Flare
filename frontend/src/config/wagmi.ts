@@ -12,7 +12,6 @@ const walletChains = [
       "polygonAmoy",
       "zoraSepolia",
       "scrollSepolia",
-      "sepolia",
       "avalancheFuji",
     ].includes(c.id)
   ),

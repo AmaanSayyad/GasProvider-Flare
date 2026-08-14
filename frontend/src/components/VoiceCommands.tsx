@@ -153,7 +153,7 @@ const VoiceCommands: React.FC = () => {
         setCommands((prev) =>
           prev.map((c, i) => (i === 0 ? command : c))
         );
-        setError("Command not recognized. Try: 'Disperse 100 USD to Base and Arbitrum'");
+        setError("Command not recognized. Try: 'Disperse 100 USD to Base and Optimism'");
       }
     } catch (err: any) {
       command.status = "error";
@@ -309,7 +309,7 @@ const VoiceCommands: React.FC = () => {
                     )}
                   </motion.p>
                   <p className="text-sm text-white/60">
-                    Say: "Disperse 100 USD to Base and Arbitrum"
+                    Say: "Disperse 100 USD to Base and Optimism"
                   </p>
                   {selectedLanguage && (
                     <p className="text-xs text-white/40 mt-1">
@@ -365,7 +365,7 @@ const VoiceCommands: React.FC = () => {
                 </div>
                 <div className="grid md:grid-cols-3 gap-3">
                   {[
-                    "Disperse 100 USD to Base and Arbitrum",
+                    "Disperse 100 USD to Base and Optimism",
                     "Send 50 dollars to Optimism",
                     "Distribute 200 USD across 5 chains",
                   ].map((cmd, index) => (
