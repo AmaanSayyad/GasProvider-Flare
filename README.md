@@ -6,6 +6,7 @@
 
 **Live demo:** [https://gas-provider.vercel.app](https://gas-provider.vercel.app)  
 **Live API:** [https://backend-production-6f62.up.railway.app](https://backend-production-6f62.up.railway.app) (`/health`)  
+**Pitch deck:** [Google Slides](https://docs.google.com/presentation/d/1dcDHlryNzrDfVudiqPB-xnrNiIX9w971PFaoAP4Jztk/edit?usp=sharing)  
 
 ---
 
@@ -211,6 +212,7 @@ npm run dev            # http://127.0.0.1:5173
 |---------|-------------|
 | Frontend | [gas-provider.vercel.app](https://gas-provider.vercel.app) |
 | Backend API | [backend-production-6f62.up.railway.app](https://backend-production-6f62.up.railway.app) |
+| Pitch deck | [Google Slides](https://docs.google.com/presentation/d/1dcDHlryNzrDfVudiqPB-xnrNiIX9w971PFaoAP4Jztk/edit?usp=sharing) |
 | Source chain | Flare **Coston2** (114) |
 
 ### Frontend env (Vercel Production)

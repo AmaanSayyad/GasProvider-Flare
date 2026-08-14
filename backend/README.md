@@ -20,6 +20,8 @@ Deploy with Railway (`railway.json` + Dockerfile).
 **Production:** https://backend-production-6f62.up.railway.app  
 Point frontend `VITE_API_URL` at that URL (already set on Vercel Production).
 
+**Pitch deck:** https://docs.google.com/presentation/d/1dcDHlryNzrDfVudiqPB-xnrNiIX9w971PFaoAP4Jztk/edit?usp=sharing
+
 ## Key services
 
 - `ftso` / `priceCalculator` — FTSO-backed pricing  

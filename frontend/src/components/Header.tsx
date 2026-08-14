@@ -5,6 +5,7 @@ import { Sun, Moon } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
 import BalanceModal from "./BalanceModal";
+import { PITCH_DECK_URL } from "../data/links";
 
 const Header: React.FC = () => {
   const { open } = useAppKit();
@@ -52,10 +53,18 @@ const Header: React.FC = () => {
 
         <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
           <a
-            href="https://flare.network/"
+            href={PITCH_DECK_URL}
             target="_blank"
             rel="noreferrer"
             className="hidden rounded-full border border-theme px-3 py-2 text-xs font-semibold text-secondary hover:border-[#E62058] hover:text-[#E62058] md:inline-flex"
+          >
+            Pitch deck
+          </a>
+          <a
+            href="https://flare.network/"
+            target="_blank"
+            rel="noreferrer"
+            className="hidden rounded-full border border-theme px-3 py-2 text-xs font-semibold text-secondary hover:border-[#E62058] hover:text-[#E62058] lg:inline-flex"
           >
             flare.network
           </a>

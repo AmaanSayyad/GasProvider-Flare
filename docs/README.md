@@ -30,4 +30,5 @@ Pay FXRP/C2FLR on Coston2 → native gas on destination chains via FTSO pricing,
 
 - Frontend: https://gas-provider.vercel.app  
 - Backend API: https://backend-production-6f62.up.railway.app  
+- Pitch deck: https://docs.google.com/presentation/d/1dcDHlryNzrDfVudiqPB-xnrNiIX9w971PFaoAP4Jztk/edit?usp=sharing  
 - Flare docs: https://dev.flare.network/  
