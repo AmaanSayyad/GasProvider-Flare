@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Coins, Radio, Waves } from "lucide-react";
-import { PITCH_DECK_URL } from "../data/links";
+import { PITCH_DECK_URL, DEMO_VIDEO_URL } from "../data/links";
 
 const steps = [
   {
@@ -188,6 +188,18 @@ const ProductStory: React.FC = () => {
               <li className="border-t border-theme pt-4">
                 <span className="font-semibold text-theme">Try it · </span>
                 Connect MetaMask → Coston2 → Review → Disperse. See confirmed drips in Activity.
+              </li>
+              <li className="border-t border-theme pt-4">
+                <span className="font-semibold text-theme">Demo video · </span>
+                <a
+                  className="text-[#E62058] hover:underline"
+                  href={DEMO_VIDEO_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Watch the walkthrough
+                </a>
+                .
               </li>
               <li className="border-t border-theme pt-4">
                 <span className="font-semibold text-theme">Pitch deck · </span>

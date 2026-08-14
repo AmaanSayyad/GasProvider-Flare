@@ -8,7 +8,10 @@
 **Date**: December 6, 2024  
 **Network**: Coston2 Testnet (Chain ID: 114)  
 **Deployer**: `0x56b9768f769b88c861955ca2ea3ec1f91870d61c`  
-**Status**: ✅ Successfully Deployed
+**Status**: ✅ Successfully Deployed  
+**Live app**: https://gas-provider.vercel.app  
+**Demo video**: https://youtu.be/XTCR6daMmE0  
+**Pitch deck**: https://docs.google.com/presentation/d/1dcDHlryNzrDfVudiqPB-xnrNiIX9w971PFaoAP4Jztk/edit?usp=sharing
 
 ---
 

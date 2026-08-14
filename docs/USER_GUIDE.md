@@ -3,6 +3,7 @@
 > **Flare Summer Signal · Track 1** — Pay FXRP/C2FLR on Coston2 → native gas on destination chains (FTSO + FDC + treasuries).
 
 **Live app:** https://gas-provider.vercel.app  
+**Demo video:** https://youtu.be/XTCR6daMmE0  
 **Pitch deck:** https://docs.google.com/presentation/d/1dcDHlryNzrDfVudiqPB-xnrNiIX9w971PFaoAP4Jztk/edit?usp=sharing
 
 

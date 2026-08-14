@@ -20,6 +20,7 @@ Open http://127.0.0.1:5173
 
 Project: `gas-provider` → https://gas-provider.vercel.app  
 API: https://backend-production-6f62.up.railway.app  
+Demo video: https://youtu.be/XTCR6daMmE0  
 Pitch deck: https://docs.google.com/presentation/d/1dcDHlryNzrDfVudiqPB-xnrNiIX9w971PFaoAP4Jztk/edit?usp=sharing
 
 Required production env:
