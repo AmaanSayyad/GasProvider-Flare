@@ -5,7 +5,6 @@
 > Pay once in **FXRP** or **C2FLR** on Flare (Coston2) and receive **native gas** on the destination chains you choose — without bridging, swapping, or hunting faucets.
 
 **Live demo:** [https://gas-provider.vercel.app](https://gas-provider.vercel.app)  
-**Vision:** Pay once in FXRP or C2FLR on Flare and receive native gas on any destination chain—without bridging, swapping, or hunting faucets.
 
 ---
 
