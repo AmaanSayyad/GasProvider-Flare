@@ -122,6 +122,15 @@ sequenceDiagram
 
 ---
 
+## Competitive Landscape
+
+| | Pay with FXRP on Flare | Native gas on many chains | Live FTSO pricing | FDC-verified deposit | No bridge risk |
+|---|---|---|---|---|---|
+| **Gas Provider** | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 |
+| **Bridges** | 🔴 | 🟡 | 🔴 | 🔴 | 🔴 |
+| **Faucets** | 🔴 | 🔴 | 🔴 | 🔴 | 🟢 |
+| **Wallet airdrops** | 🔴 | 🟡 | 🔴 | 🔴 | 🟢 |
+
 ## Flare stack (Track 1)
 
 | Primitive | Role |
