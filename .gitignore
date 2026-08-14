@@ -44,3 +44,7 @@ temp/
 # Vercel
 .vercel
 **/.vercel
+
+# Local checkouts
+GasProvider-Monad-main/
+GasProvider-main 2/
