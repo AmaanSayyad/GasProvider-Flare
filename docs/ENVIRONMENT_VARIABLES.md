@@ -408,7 +408,7 @@ VITE_API_URL=http://localhost:3000
 ```bash
 NODE_ENV=staging
 LOG_LEVEL=info
-VITE_API_URL=https://staging-api.gasfountain.io
+VITE_API_URL=https://backend-production-6f62.up.railway.app
 ```
 
 ### Production
@@ -416,7 +416,7 @@ VITE_API_URL=https://staging-api.gasfountain.io
 ```bash
 NODE_ENV=production
 LOG_LEVEL=warn
-VITE_API_URL=https://api.gasfountain.io
+VITE_API_URL=https://backend-production-6f62.up.railway.app
 ENABLE_METRICS=true
 ```
 

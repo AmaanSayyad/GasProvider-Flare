@@ -467,14 +467,14 @@ docker run -d \
 ### 5.4 Verify Backend
 
 ```bash
-# Test health endpoint
-curl http://your-backend-url/health
+# Production API
+curl https://backend-production-6f62.up.railway.app/health
 
 # Test supported chains endpoint
-curl http://your-backend-url/api/chains/supported
+curl https://backend-production-6f62.up.railway.app/api/chains/supported
 
 # Test treasury balances
-curl http://your-backend-url/api/treasury/balances
+curl https://backend-production-6f62.up.railway.app/api/treasury/balances
 ```
 
 ---
@@ -483,11 +483,10 @@ curl http://your-backend-url/api/treasury/balances
 
 ### 6.1 Configure Frontend
 
-Edit `frontend/.env`:
+Edit `frontend/.env` (local) or Vercel Production env:
 
 ```bash
-VITE_API_URL=https://your-backend-url.com
-VITE_WS_URL=wss://your-backend-url.com
+VITE_API_URL=https://backend-production-6f62.up.railway.app
 VITE_WALLETCONNECT_PROJECT_ID=your_project_id
 VITE_ENABLE_TESTNET=true
 ```
@@ -698,7 +697,7 @@ npm run test:rpc
 
 ```bash
 # Test backend API
-curl https://your-backend-url.com/health
+curl https://backend-production-6f62.up.railway.app/health
 ```
 
 ---

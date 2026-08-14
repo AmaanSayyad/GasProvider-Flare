@@ -31,7 +31,6 @@
         "zod": "^3.22.4"
     },
     "devDependencies": {
-        "@nomicfoundation/hardhat-verify": "^3.0.7",
         "@types/node": "^20.10.0",
         "@types/pg": "^8.10.9",
         "@vitest/ui": "^1.0.4",

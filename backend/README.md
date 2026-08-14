@@ -15,7 +15,10 @@ Health: `GET /health`
 
 ## Production
 
-Deploy with Railway (`railway.json` + Dockerfile). Point frontend `VITE_API_URL` at this service.
+Deploy with Railway (`railway.json` + Dockerfile).
+
+**Production:** https://backend-production-6f62.up.railway.app  
+Point frontend `VITE_API_URL` at that URL (already set on Vercel Production).
 
 ## Key services
 

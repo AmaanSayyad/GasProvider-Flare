@@ -5,6 +5,7 @@
 > Pay once in **FXRP** or **C2FLR** on Flare (Coston2) and receive **native gas** on the destination chains you choose — without bridging, swapping, or hunting faucets.
 
 **Live demo:** [https://gas-provider.vercel.app](https://gas-provider.vercel.app)  
+**Live API:** [https://backend-production-6f62.up.railway.app](https://backend-production-6f62.up.railway.app) (`/health`)  
 
 ---
 
@@ -200,12 +201,12 @@ npm run dev            # http://127.0.0.1:5173
 | Service | URL / notes |
 |---------|-------------|
 | Frontend | [gas-provider.vercel.app](https://gas-provider.vercel.app) |
-| Backend API | Railway (`VITE_API_URL`) |
+| Backend API | [backend-production-6f62.up.railway.app](https://backend-production-6f62.up.railway.app) |
 | Source chain | Flare **Coston2** (114) |
 
 ### Frontend env (Vercel Production)
 
-- `VITE_API_URL` — Railway backend base URL  
+- `VITE_API_URL=https://backend-production-6f62.up.railway.app`  
 - `VITE_REOWN_PROJECT_ID` — Reown AppKit project id  
 - `VITE_TREASURY_*_ADDRESS` — treasury contracts per chain  
 

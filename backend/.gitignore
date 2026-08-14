@@ -16,5 +16,5 @@ env.flare.local
 *.pem
 
 # Prisma
-prisma/migrations/
+# prisma/migrations/  # keep migrations in repo for Railway/prod deploys
 

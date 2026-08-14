@@ -18,13 +18,14 @@ Open http://127.0.0.1:5173
 
 ## Production (Vercel)
 
-Project: `gas-provider` → https://gas-provider.vercel.app
+Project: `gas-provider` → https://gas-provider.vercel.app  
+API: https://backend-production-6f62.up.railway.app
 
 Required production env:
 
 | Variable | Purpose |
 |----------|---------|
-| `VITE_API_URL` | Backend API (Railway) |
+| `VITE_API_URL` | `https://backend-production-6f62.up.railway.app` |
 | `VITE_REOWN_PROJECT_ID` | Reown / AppKit |
 | `VITE_TREASURY_*_ADDRESS` | Optional overrides; defaults live in `src/data/chains.ts` |
 
