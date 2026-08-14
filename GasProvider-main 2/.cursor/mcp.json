@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "flare-devhub": {
+      "url": "https://dev.flare.network/mcp"
+    }
+  }
+}

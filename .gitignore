@@ -1,0 +1,50 @@
+# Nested sibling experiment — not part of Flare submission
+GasProvider-Monad-main/
+
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build
+dist/
+build/
+.turbo/
+*.log
+
+# Env / secrets
+.env
+.env.local
+.env.*.local
+.env.vercel.production
+**/.env
+**/.env.local
+**/.env.*.local
+**/env.flare.local
+**/.env.flare.local
+**/.env.vercel*
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Keys
+*.key
+*.pem
+*.secret
+
+# DB / coverage
+*.db
+*.sqlite
+coverage/
+.nyc_output/
+tmp/
+temp/
+*.tmp
+
+# Vercel
+.vercel
+**/.vercel
