@@ -2,7 +2,7 @@ import { GetStatusResponse, GetHistoryResponse, IntentStatus } from "../types";
 import { retryWithBackoff, classifyError, logError } from "./errorHandler";
 
 // Use localhost when running on localhost, otherwise use environment variable or Railway URL
-const getApiBaseUrl = () => {
+export const getApiBaseUrl = () => {
   // If running on localhost, always use local backend
   if (typeof window !== "undefined" && window.location.hostname === "localhost") {
     return "http://localhost:3000";

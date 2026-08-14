@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useGasFountain } from "../context/GasFountainContext";
 import VisualizationCanvas from "./VisualizationCanvas";
-import NetworkGraph3D from "./NetworkGraph3D";
-import { Check, Loader2, XCircle, Box, Boxes } from "lucide-react";
+import { Check, Loader2, XCircle } from "lucide-react";
 import { useIntentStatus } from "../hooks/useIntentStatus";
-import UnifiedBalance from "./unified-balance/unified-balance";
 type Status = "dispersing" | "success" | "failed";
 
 const Step2Execution: React.FC = () => {
@@ -15,7 +13,6 @@ const Step2Execution: React.FC = () => {
     depositTxHash || `0x${Array.from({ length: 64 }, () => Math.floor(Math.random() * 16).toString(16)).join("")}`;
 
   const [status, setStatus] = useState<Status>("dispersing");
-  const [viewMode, setViewMode] = useState<"2d" | "3d">("3d"); // Default to 3D
   const historyAddedRef = useRef(false);
 
   // Use real backend hook to track intent status
@@ -173,46 +170,15 @@ const Step2Execution: React.FC = () => {
           </div>
         </div>
 
-        {/* View Mode Toggle */}
-        <div className="absolute top-8 right-8 z-30 flex gap-2 bg-black/40 backdrop-blur-sm border border-white/10 rounded-lg p-1">
-          <button
-            onClick={() => setViewMode("2d")}
-            className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${
-              viewMode === "2d"
-                ? "bg-primary text-white"
-                : "text-secondary hover:text-white hover:bg-white/10"
-            }`}
-            title="2D View"
-          >
-            <Box className="w-4 h-4" />
-          </button>
-          <button
-            onClick={() => setViewMode("3d")}
-            className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${
-              viewMode === "3d"
-                ? "bg-primary text-white"
-                : "text-secondary hover:text-white hover:bg-white/10"
-            }`}
-            title="3D View"
-          >
-            <Boxes className="w-4 h-4" />
-          </button>
-        </div>
-
         <div className="flex-1 w-full h-full pt-20 relative overflow-hidden">
-          {viewMode === "3d" ? (
-            <NetworkGraph3D
-              isDispersing={true}
-              isCompleted={intentData?.intent?.status === "DISPERSED" || intentData?.intent?.globalPhase === "COMPLETED"}
-              intentId={intentId}
-            />
-          ) : (
           <VisualizationCanvas
             isDispersing={true}
-            isCompleted={intentData?.intent?.status === "DISPERSED" || intentData?.intent?.globalPhase === "COMPLETED"}
+            isCompleted={
+              intentData?.intent?.status === "DISPERSED" ||
+              intentData?.intent?.globalPhase === "COMPLETED"
+            }
             intentId={intentId}
           />
-          )}
         </div>
       </div>
     </div>

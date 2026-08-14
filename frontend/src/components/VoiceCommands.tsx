@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Mic, MicOff, Volume2, Languages, CheckCircle, XCircle, Radio, Sparkles } from "lucide-react";
 import { useAccount } from "wagmi";
 import { motion, AnimatePresence } from "framer-motion";
+import { getApiBaseUrl } from "../utils/api";
 
 interface VoiceCommand {
   command: string;
@@ -129,7 +130,7 @@ const VoiceCommands: React.FC = () => {
         const amount = amountMatch ? amountMatch[1] : null;
 
         // Send to backend
-        const response = await fetch("http://localhost:3000/voice/command", {
+        const response = await fetch(`${getApiBaseUrl()}/voice/command`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
