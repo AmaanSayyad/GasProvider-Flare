@@ -42,7 +42,10 @@ export class FTSOPriceService {
     cacheTTL: number = 30000, // 30 seconds default
     fallbackSource?: FallbackPriceSource
   ) {
-    this.provider = new ethers.JsonRpcProvider(rpcUrl);
+    this.provider = new ethers.JsonRpcProvider(rpcUrl, 114, {
+      staticNetwork: true,
+      polling: false,
+    });
     this.ftsoV2Contract = new ethers.Contract(
       ftsoV2Address,
       ftsoV2Abi,

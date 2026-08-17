@@ -12,6 +12,7 @@ import { TransactionExecutor, Transaction, TransactionReceipt } from "./transact
 import { PriceCalculator } from "./priceCalculator";
 import * as fs from "fs";
 import * as path from "path";
+import { isActiveChain } from "../config/activeChains";
 import {
   getErrorHandler,
   ErrorCategory,
@@ -159,7 +160,7 @@ export class TreasuryDistributionService {
           const chainConfig = config as any;
           // Support both 'address' and 'treasuryAddress' keys for backward compatibility
           const treasuryAddr = chainConfig.treasuryAddress || chainConfig.address;
-          if (chainConfig.chainId && treasuryAddr) {
+          if (chainConfig.chainId && treasuryAddr && isActiveChain(chainConfig.chainId)) {
             this.treasuryAddresses.set(chainConfig.chainId, treasuryAddr);
             console.log(`Loaded Treasury address for chain ${chainConfig.chainId}: ${treasuryAddr}`);
           }
@@ -210,7 +211,7 @@ export class TreasuryDistributionService {
           }
         }
         
-        if (contractAddress && !this.treasuryAddresses.has(chainId)) {
+        if (contractAddress && !this.treasuryAddresses.has(chainId) && isActiveChain(chainId)) {
           this.treasuryAddresses.set(chainId, contractAddress);
           console.log(`Loaded Treasury address for chain ${chainId} from config: ${contractAddress}`);
         }

@@ -1,5 +1,6 @@
 import { ethers } from "ethers";
 import { getRpcConfig, RpcEndpoint } from "../config/rpcEndpoints";
+import { ACTIVE_CHAIN_IDS } from "../config/activeChains";
 import {
   getErrorHandler,
   ErrorCategory,
@@ -67,35 +68,27 @@ export class TransactionExecutor {
     this.rpcHealth = new Map();
     this.healthCheckInterval = null;
 
-    // Initialize providers for all configured chains
+    // Initialize providers for demo chains only (avoids OOM on Railway)
     this.initializeProviders(privateKey);
 
-    // Start RPC health checking
-    this.startHealthChecking();
+    if (process.env.ENABLE_RPC_HEALTH_CHECKS === "true") {
+      this.startHealthChecking();
+    }
+  }
+
+  private createProvider(url: string, chainId: number): ethers.JsonRpcProvider {
+    // staticNetwork skips eth_chainId detect-loop that retries forever on dead RPCs
+    return new ethers.JsonRpcProvider(url, chainId, {
+      staticNetwork: true,
+      polling: false,
+    });
   }
 
   /**
-   * Initialize Web3 providers for all chains
+   * Initialize Web3 providers for active demo chains only
    */
   private initializeProviders(privateKey?: string): void {
-    // Get all configured chain IDs from RPC config
-    const chainIds = [
-      114,       // Coston2 Testnet
-      14,        // Flare Mainnet
-      11155111,  // Ethereum Sepolia
-      80002,     // Polygon Amoy
-      421614,    // Arbitrum Sepolia
-      11155420,  // Optimism Sepolia
-      97,        // BSC Testnet
-      56,        // BSC Mainnet
-      43114,     // Avalanche Mainnet
-      43113,     // Avalanche Fuji Testnet
-      84532,     // Base Sepolia
-      4801,      // World Sepolia
-      999999999, // Zora Sepolia
-      534351,    // Scroll Sepolia
-      10143,     // Monad Testnet
-    ];
+    const chainIds = [...ACTIVE_CHAIN_IDS];
 
     for (const chainId of chainIds) {
       const rpcConfig = getRpcConfig(chainId);
@@ -110,7 +103,7 @@ export class TransactionExecutor {
       )[0];
 
       try {
-        const provider = new ethers.JsonRpcProvider(primaryEndpoint.url, chainId);
+        const provider = this.createProvider(primaryEndpoint.url, chainId);
         this.providers.set(chainId, provider);
         
         // Enhanced logging for Monad Testnet
@@ -192,7 +185,7 @@ export class TransactionExecutor {
     const startTime = Date.now();
 
     try {
-      const provider = new ethers.JsonRpcProvider(endpoint.url, chainId);
+      const provider = this.createProvider(endpoint.url, chainId);
       await provider.getBlockNumber();
 
       const latency = Date.now() - startTime;
@@ -258,7 +251,7 @@ export class TransactionExecutor {
 
     for (const { endpoint } of sortedEndpoints) {
       try {
-        const provider = new ethers.JsonRpcProvider(endpoint.url, chainId);
+        const provider = this.createProvider(endpoint.url, chainId);
         await provider.getBlockNumber();
 
         // Update provider

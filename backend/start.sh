@@ -12,4 +12,6 @@ WATCH=$!
 ./node_modules/.bin/prisma migrate deploy || npx --no-install prisma migrate deploy
 kill $WATCH 2>/dev/null || true
 echo "=== RUNNING NODE ==="
+export NODE_OPTIONS="${NODE_OPTIONS:---max-old-space-size=384}"
+echo "NODE_OPTIONS=$NODE_OPTIONS"
 exec node dist/index.js

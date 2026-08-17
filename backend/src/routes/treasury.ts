@@ -13,6 +13,7 @@ import { PriceCalculator } from "../services/priceCalculator";
 import { IntentManager } from "../services/intentManager";
 import { TreasuryDistributionService } from "../services/treasuryDistribution";
 import { ApiError } from "../types";
+import { DISABLED_DESTINATION_CHAIN_IDS } from "../config/activeChains";
 import {
   getErrorHandler,
   ErrorCategory,
@@ -44,12 +45,6 @@ const UserHistoryQuerySchema = z.object({
   page: z.string().regex(/^\d+$/).transform(Number).pipe(z.number().int().min(1)).default("1"),
   limit: z.string().regex(/^\d+$/).transform(Number).pipe(z.number().int().min(1).max(100)).default("20"),
 });
-
-/** Disabled destinations (operator gas / demo stability). */
-const DISABLED_DESTINATION_CHAIN_IDS = new Set<number>([
-  11155111, // Ethereum Sepolia
-  421614, // Arbitrum Sepolia
-]);
 
 function assertDestinationsEnabled(destinationChains: number[]): ApiError | null {
   const blocked = destinationChains.filter((id) => DISABLED_DESTINATION_CHAIN_IDS.has(id));

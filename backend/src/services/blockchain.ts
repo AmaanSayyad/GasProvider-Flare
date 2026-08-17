@@ -50,7 +50,10 @@ export class BlockchainService {
         throw new Error(`Chain configuration not found for chainId: ${chainId}`);
       }
 
-      const provider = new ethers.JsonRpcProvider(config.rpcUrl);
+      const provider = new ethers.JsonRpcProvider(config.rpcUrl, chainId, {
+        staticNetwork: true,
+        polling: false,
+      });
       this.providers.set(chainId, provider);
     }
 

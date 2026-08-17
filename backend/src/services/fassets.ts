@@ -33,7 +33,10 @@ export class FAssetsService {
     rpcUrl: string,
     fAssetConfigs: FAssetConfig[]
   ) {
-    this.provider = new ethers.JsonRpcProvider(rpcUrl);
+    this.provider = new ethers.JsonRpcProvider(rpcUrl, 114, {
+      staticNetwork: true,
+      polling: false,
+    });
     this.loggingEnabled = process.env.FASSETS_ENABLE_LOGGING === "true";
 
     // Initialize FAsset configurations

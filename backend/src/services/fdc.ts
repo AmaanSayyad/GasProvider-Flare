@@ -36,7 +36,10 @@ export class FDCAttestationClient {
     votingEpochDurationSeconds: number = 90,
     attestationFee: string = "1.0"
   ) {
-    this.provider = new ethers.JsonRpcProvider(rpcUrl);
+    this.provider = new ethers.JsonRpcProvider(rpcUrl, 114, {
+      staticNetwork: true,
+      polling: false,
+    });
     this.fdcHubAddress = fdcHubAddress;
     this.fdcVerificationAddress = fdcVerificationAddress;
     this.stateConnectorAddress = stateConnectorAddress;
